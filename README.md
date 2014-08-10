@@ -24,44 +24,45 @@ Setup developer environment on Windows
   - (optional) [Dropbox](https://www.dropbox.com/)
 
 #### Config
-  - SSH
-  	$ cd ~
-  	$ mkdir .ssh 
-  	$ chmod 0700 .ssh/
-  	$ cd .ssh/
-  	$ vi config
+
+#### SSH
+	$ cd ~
+	$ mkdir .ssh 
+	$ chmod 0700 .ssh/
+	$ cd .ssh/
+	$ vi config
 
 	# Edit "config"-File
-  	Host github.com
+	Host github.com
 	IdentityFile ~/.ssh/github.com/github
 	
 	Host vagrant
 	HostName 127.0.0.1
 	User vagrant
 	Port 2222
-    IdentityFile ~/.ssh/vagrant/vagrant
-  	
-  	[ESC] :wq
+	IdentityFile ~/.ssh/vagrant/vagrant
+
+	[ESC] :wq
 
 	### Try it
 	$ clone thinks from github via SSH ;-)
 	# or login to a vagrant-box
 	$ ssh vagrant
 
-  	#### Result .ssh-Tree
-  	.ssh/
-  	--- github.com/
-  	-------------- github
-  	-------------- github.pub
-  	--- vagrant/
-  	----------- vagrant
-  	----------- vagrant.pub
-  	--- demo/
-  	-------- demo
-  	-------- demo.pub
-  	--- config
+  #### Result .ssh-Tree
+	.ssh/
+	--- github.com/
+	-------------- github
+	-------------- github.pub
+	--- vagrant/
+	----------- vagrant
+	----------- vagrant.pub
+	--- demo/
+	-------- demo
+	-------- demo.pub
+	--- config
 
-  - ST3
+#### ST3
 
 
 
