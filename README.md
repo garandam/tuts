@@ -1,7 +1,10 @@
 Tutorials
 ====
 
-My collection of descriptions
+My collection of descriptions 
+
+> "Documentation is like sex: when it is good, it is very, very good; and when it is bad, it is better than nothing"  
+> Dick Brandon
 
 ### Table of Contents
 
