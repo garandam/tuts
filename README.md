@@ -49,7 +49,7 @@ Setup developer environment on Windows
 	# or login to a vagrant-box
 	$ ssh vagrant
 
-  #### Result .ssh-Tree
+#### Result .ssh-Tree
 	.ssh/
 	--- github.com/
 	-------------- github
