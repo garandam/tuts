@@ -83,15 +83,15 @@ ctrl + ! on Windows (Swiss-Layout) or
 View | Show Console  
 Copy Python install code from [here.](https://sublime.wbond.net/installation)
 
-  #### Nice Packages
+#### Nice Packages
   SideBar Enhancment  
   Emmet  
   SublimeLinter
 
-  #### (optional) Sync-Config to Dropbox
+#### (optional) Sync-Config to Dropbox
   ToDo
 
-  #### (optional) subl alias
+#### (optional) subl alias
 	$ cd ~
 	$ vi .bashrc
 	### add this line
