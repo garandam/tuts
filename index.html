@@ -66,11 +66,24 @@ Dick Brandon</p>
 </li>
 <li>(optional) <a href="https://www.dropbox.com/">Dropbox</a>
 </li>
-</ul><h4>
-<a name="config" class="anchor" href="#config"><span class="octicon octicon-link"></span></a>Config</h4>
+</ul><h2>
+<a name="install--config" class="anchor" href="#install--config"><span class="octicon octicon-link"></span></a>Install &amp; Config</h2>
 
-<h4>
-<a name="ssh" class="anchor" href="#ssh"><span class="octicon octicon-link"></span></a>SSH</h4>
+<h3>
+<a name="git-install" class="anchor" href="#git-install"><span class="octicon octicon-link"></span></a>GIT install</h3>
+
+<p>ToDo ...</p>
+
+<ul>
+<li>
+<p>now you can use git-bash as cmd ;-)</p>
+
+<p>How to use GIT:</p>
+</li>
+<li><a href="http://rogerdudler.github.io/git-guide/index.de.html">Der einfache Einstieg</a></li>
+<li><a href="http://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></li>
+</ul><h3>
+<a name="ssh-config" class="anchor" href="#ssh-config"><span class="octicon octicon-link"></span></a>SSH config</h3>
 
 <pre><code>$ cd ~
 $ mkdir .ssh 
@@ -100,20 +113,61 @@ $ ssh vagrant
 <a name="result-ssh-tree" class="anchor" href="#result-ssh-tree"><span class="octicon octicon-link"></span></a>Result .ssh-Tree</h4>
 
 <pre><code>.ssh/
---- github.com/
--------------- github
--------------- github.pub
---- vagrant/
------------ vagrant
------------ vagrant.pub
---- demo/
--------- demo
--------- demo.pub
---- config
+|-- github.com/
+|   |-- github
+|   └-- github.pub
+|-- vagrant/
+|   |-- vagrant
+|   └-- vagrant.pub
+|-- demo/
+|   |-- demo
+|   └-- demo.pub
+└-- config
 </code></pre>
 
+<h3>
+<a name="sublime-text-3-st3" class="anchor" href="#sublime-text-3-st3"><span class="octicon octicon-link"></span></a>Sublime Text 3 (ST3)</h3>
+
 <h4>
-<a name="st3" class="anchor" href="#st3"><span class="octicon octicon-link"></span></a>ST3</h4>
+<a name="download-sublime-text-3" class="anchor" href="#download-sublime-text-3"><span class="octicon octicon-link"></span></a>
+<a href="http://www.sublimetext.com/">Download</a> Sublime Text 3</h4>
+
+<h4>
+<a name="add-package-controll" class="anchor" href="#add-package-controll"><span class="octicon octicon-link"></span></a>Add Package Controll</h4>
+
+<p>ctrl + ! on Windows (Swiss-Layout) or<br>
+View | Show Console<br>
+Copy Python install code from <a href="https://sublime.wbond.net/installation">here.</a></p>
+
+<h4>
+<a name="nice-packages" class="anchor" href="#nice-packages"><span class="octicon octicon-link"></span></a>Nice Packages</h4>
+
+<p>SideBar Enhancment<br>
+  Emmet<br>
+  SublimeLinter</p>
+
+<h4>
+<a name="optional-sync-config-to-dropbox" class="anchor" href="#optional-sync-config-to-dropbox"><span class="octicon octicon-link"></span></a>(optional) Sync-Config to Dropbox</h4>
+
+<p>ToDo</p>
+
+<h4>
+<a name="optional-subl-alias" class="anchor" href="#optional-subl-alias"><span class="octicon octicon-link"></span></a>(optional) subl alias</h4>
+
+<pre><code>$ cd ~
+$ vi .bashrc
+### add this line
+alias subl="/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
+[ESC] :wq
+
+### now you can use the "subl" alias on the cmd
+subl .
+subl file-Name
+subl folder-Name
+
+### Sample with &amp; =&gt; with the "&amp;" you can work on the cmd ;-)
+subl test.txt &amp;
+</code></pre>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
