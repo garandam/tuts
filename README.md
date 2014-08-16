@@ -26,9 +26,18 @@ Setup developer environment on Windows
   - (optional) [Fences](http://www.stardock.com/products/fences/)
   - (optional) [Dropbox](https://www.dropbox.com/)
 
-#### Config
+## Install & Config
 
-#### SSH
+### GIT install
+  ToDo ...
+
+  - now you can use git-bash as cmd ;-)
+
+  How to use GIT:
+  - [Der einfache Einstieg](http://rogerdudler.github.io/git-guide/index.de.html)
+  - [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+
+### SSH config
 	$ cd ~
 	$ mkdir .ssh 
 	$ chmod 0700 .ssh/
@@ -54,18 +63,48 @@ Setup developer environment on Windows
 
 #### Result .ssh-Tree
 	.ssh/
-	--- github.com/
-	-------------- github
-	-------------- github.pub
-	--- vagrant/
-	----------- vagrant
-	----------- vagrant.pub
-	--- demo/
-	-------- demo
-	-------- demo.pub
-	--- config
+	|-- github.com/
+	|	|-- github
+	|	└-- github.pub
+	|-- vagrant/
+	|	|-- vagrant
+	|	└-- vagrant.pub
+	|-- demo/
+	|	|-- demo
+	|	└-- demo.pub
+	└-- config
 
-#### ST3
+### Sublime Text 3 (ST3)
+
+#### [Download](http://www.sublimetext.com/) Sublime Text 3
+
+#### Add Package Controll
+ctrl + ! on Windows (Swiss-Layout) or  
+View | Show Console  
+Copy Python install code from [here.](https://sublime.wbond.net/installation)
+
+  #### Nice Packages
+  SideBar Enhancment  
+  Emmet  
+  SublimeLinter
+
+  #### (optional) Sync-Config to Dropbox
+  ToDo
+
+  #### (optional) subl alias
+	$ cd ~
+	$ vi .bashrc
+	### add this line
+	alias subl="/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
+	[ESC] :wq
+
+	### now you can use the "subl" alias on the cmd
+	subl .
+	subl file-Name
+	subl folder-Name
+
+	### Sample with & => with the "&" you can work on the cmd ;-)
+	subl test.txt &
 
 
 
