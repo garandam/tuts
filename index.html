@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Tuts : My collection of descriptions">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Tuts</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/garandam/tuts">View on GitHub</a>
+
+          <h1 id="project_title">Tuts</h1>
+          <h2 id="project_tagline">My collection of descriptions</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/garandam/tuts/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/garandam/tuts/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="tutorials" class="anchor" href="#tutorials"><span class="octicon octicon-link"></span></a>Tutorials</h1>
+
+<p>My collection of descriptions </p>
+
+<blockquote>
+<p>"Documentation is like sex: when it is good, it is very, very good; and when it is bad, it is better than nothing"<br>
+Dick Brandon</p>
+</blockquote>
+
+<h3>
+<a name="table-of-contents" class="anchor" href="#table-of-contents"><span class="octicon octicon-link"></span></a>Table of Contents</h3>
+
+<ul>
+<li>Setup developer environment on Windows</li>
+<li>...</li>
+</ul><h1>
+<a name="setup-developer-environment-on-windows" class="anchor" href="#setup-developer-environment-on-windows"><span class="octicon octicon-link"></span></a>Setup developer environment on Windows</h1>
+
+<h4>
+<a name="tools-to-install" class="anchor" href="#tools-to-install"><span class="octicon octicon-link"></span></a>Tools to install</h4>
+
+<ul>
+<li><a href="http://git-scm.com/downloads">GIT (Bash, GUI)</a></li>
+<li><a href="http://www.sublimetext.com/">Sublime-Text 3 (ST3)</a></li>
+<li><a href="https://www.virtualbox.org/wiki/Downloads">Virtual Box</a></li>
+<li><a href="http://www.vagrantup.com/">Vagrant</a></li>
+<li><a href="http://www.chiark.greenend.org.uk/%7Esgtatham/putty/download.html">PuTTY / PuTTYGen</a></li>
+<li><a href="http://winscp.net/eng/index.php">WinSCP</a></li>
+<li><a href="http://www.7-zip.de/">7-zip</a></li>
+<li><a href="http://keepass.info/">KeePass</a></li>
+<li>(optional) <a href="http://www.stardock.com/products/fences/">Fences</a>
+</li>
+<li>(optional) <a href="https://www.dropbox.com/">Dropbox</a>
+</li>
+</ul><h4>
+<a name="config" class="anchor" href="#config"><span class="octicon octicon-link"></span></a>Config</h4>
+
+<h4>
+<a name="ssh" class="anchor" href="#ssh"><span class="octicon octicon-link"></span></a>SSH</h4>
+
+<pre><code>$ cd ~
+$ mkdir .ssh 
+$ chmod 0700 .ssh/
+$ cd .ssh/
+$ vi config
+
+# Edit "config"-File
+Host github.com
+IdentityFile ~/.ssh/github.com/github
+
+Host vagrant
+HostName 127.0.0.1
+User vagrant
+Port 2222
+IdentityFile ~/.ssh/vagrant/vagrant
+
+[ESC] :wq
+
+### Try it
+$ clone thinks from github via SSH ;-)
+# or login to a vagrant-box
+$ ssh vagrant
+</code></pre>
+
+<h4>
+<a name="result-ssh-tree" class="anchor" href="#result-ssh-tree"><span class="octicon octicon-link"></span></a>Result .ssh-Tree</h4>
+
+<pre><code>.ssh/
+--- github.com/
+-------------- github
+-------------- github.pub
+--- vagrant/
+----------- vagrant
+----------- vagrant.pub
+--- demo/
+-------- demo
+-------- demo.pub
+--- config
+</code></pre>
+
+<h4>
+<a name="st3" class="anchor" href="#st3"><span class="octicon octicon-link"></span></a>ST3</h4>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Tuts maintained by <a href="https://github.com/garandam">garandam</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
