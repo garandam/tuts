@@ -8,6 +8,7 @@
 #   - set an encrypted root password (rootpw is vagrant)
 #   - for 32-bit installations, replace the occurences of "x86_64" by "i386"
 #
+#
 ##############################################################################
 
 # Text mode or graphical mode?
@@ -39,7 +40,7 @@ rootpw --iscrypted $1$0/pO$IM8BI8mQGLsoj/gV0ocJ50
 authconfig --useshadow --passalgo=sha512
 
 # Firewall disabled
-firewall -- disabled
+firewall --disabled
 
 # SElinux
 selinux --permissive
