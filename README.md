@@ -89,7 +89,21 @@ Copy Python install code from [here.](https://sublime.wbond.net/installation)
   SublimeLinter
 
 #### (optional) Sync-Config to Dropbox
-  ToDo
+  Close ST3
+	Create folder in your Dropbox
+	{Dropbox Path}/Software/Sublime Text 3
+	$ cd Dropbox
+	$ mkdir Software/Sublime Text 3
+
+	### C:\Users\userName\AppData\Roaming\Sublime Text 3\
+	$ cd ~
+	$ cd AppData\Roaming\Sublime Text 3\
+
+	### Copy Packages, Installed Packages to {Dropbox Path}/Software/Sublime Text 3
+	$ mv Packages -d {Dropbox Path}/Software/Sublime Text 3
+	$ ln -s {Dropbox Path}/Software/Sublime Text 3/Packages
+	$ mv Installed Packages -d {Dropbox Path}/Software/Sublime Text 3
+	$ ln -s {Dropbox Path}/Software/Sublime Text 3/Installed Packages
 
 #### (optional) subl alias
 	$ cd ~
