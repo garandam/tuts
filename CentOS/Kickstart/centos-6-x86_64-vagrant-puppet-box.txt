@@ -1,0 +1,172 @@
+##############################################################################
+#
+# Example KickStart file for CentOS Vagrant/Puppet install
+#
+# Important note: this file is intended as an example only, and users are 
+# expected to tailor it to their needs. In particular, users should:
+#   - review the partition table
+#   - set an encrypted root password (rootpw is vagrant)
+#   - for 32-bit installations, replace the occurences of "x86_64" by "i386"
+#
+##############################################################################
+
+# Text mode or graphical mode?
+text
+
+# Install or upgrade?
+install
+
+# installation path
+cdrom
+
+# Language support
+lang en_US.UTF-8
+
+# Keyboard
+keyboard us
+
+# Timezone
+timezone --utc Europe/Zurich
+
+# Network
+network --onboot yes --bootproto dhcp --noipv6
+
+# Root password - change to a real password (use "grub-md5-crypt" to get the crypted version)
+# rootpw is vagrant
+rootpw --iscrypted $1$0/pO$IM8BI8mQGLsoj/gV0ocJ50
+
+# Authconfig
+authconfig --useshadow --passalgo=sha512
+
+# Firewall disabled
+firewall -- disabled
+
+# SElinux
+selinux --permissive
+
+# Bootloader
+bootloader --location=mbr --append="crashkernel=auto rhgb quiet"
+zerombr
+
+# Partition table
+clearpart --all --initlabel
+
+part /boot --size=256
+part pv.01 --size=1024 --grow
+volgroup vg1 pv.01
+logvol /    --vgname=vg1 --size=1024  --name=root  --grow
+logvol swap --vgname=vg1 --recommended --name=swap --fstype=swap
+
+#
+# (without GUI) => skipx
+#
+skipx
+
+#
+# Repos
+#
+#EPEL (http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm)
+repo --name=epel --baseurl=http://dl.fedoraproject.org/pub/epel/6/x86_64/
+
+#PUPPET (http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm)
+repo --name=puppet --baseurl=http://yum.puppetlabs.com/el/6/products/x86_64/
+
+# Reboot after installation? (reboot / shutdwon)
+shutdown
+
+##############################################################################
+#
+# packages part of the KickStart configuration file
+#
+##############################################################################
+%packages
+@ core
+@ development
+openssh-server
+openssh-clients
+wget
+curl
+git
+man
+vim
+ntp
+%end
+
+##############################################################################
+#
+# post installation part of the KickStart configuration file
+#
+##############################################################################
+%post
+echo
+echo "################################"
+echo "# Running Post Configuration   #"
+echo "################################"
+#
+# NTP
+#
+chkconfig ntpd on
+service ntpd stop
+ntpdate time.nist.gov
+service ntpd start
+
+#
+# SSHD
+#
+chkconfig sshd on
+chkconfig iptables off
+chkconfig ip6tables off
+
+#
+# Vagrant user
+#
+useradd vagrant
+mkdir -m 0700 -p /home/vagrant/.ssh
+
+curl https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+
+chmod 600 /home/vagrant/.ssh/authorized_keys
+chown -R vagrant:vagrant /home/vagrant/.ssh
+
+sed -i 's/^\(Defaults.*requiretty\)/#\1/' /etc/sudoers
+
+echo "vagrant ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+#
+# ETH0 (onboot)
+#
+cat << EOF1 > /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=no
+BOOTPROTO=dhcp
+EOF1
+
+#
+# Update the RPMs
+#
+yum update -y --skip-broken
+
+# Configure and start automatic update system:
+chkconfig --add yum-autoupdate
+service yum-autoupdate start
+
+#
+# Puppet install
+#
+yum install --enablerepo=puppet -y puppet facter
+
+#
+# Cleanup
+#
+rm -rf /tmp/*
+rm -f /var/log/wtmp
+rm -f /var/log/btmp
+yum clean all
+history -c
+
+# Done
+exit 0
+
+%end
