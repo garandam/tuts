@@ -145,8 +145,8 @@ service yum-autoupdate start
 # Install other Tools
 #
 
-$ yum groupinstall -y "Development Tools"
-$ yum install -y ntp wget man curl git vim bind-utils.x86_64
+yum groupinstall -y "Development Tools"
+yum install -y ntp wget man curl git vim bind-utils.x86_64
 
 #
 # Puppet install
