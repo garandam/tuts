@@ -21,10 +21,10 @@ install
 cdrom
 
 # Language support
-lang en_US.UTF-8
+lang de_CH.UTF-8
 
-# Keyboard
-keyboard us
+# Keyboard (Swiss German)
+keyboard sg
 
 # Timezone
 timezone --utc Europe/Zurich
@@ -39,7 +39,13 @@ rootpw --iscrypted $1$0/pO$IM8BI8mQGLsoj/gV0ocJ50
 # Authconfig
 authconfig --useshadow --passalgo=sha512
 
-# Firewall disabled
+# Firewall
+# CentOS 6.6 min (ignore firewall)
+# Bug => https://bugzilla.redhat.com/show_bug.cgi?id=1161682
+#
+# So, the issue here is that when the "Minimal" Install option is selected 
+# in a RHEL-6.6 server install iso (either network install or ISO install), 
+# there is no iptables or ip6tables files created in /etc/sysconfig/ as part of the install.
 # firewall --disabled
 
 # SElinux
@@ -69,8 +75,8 @@ skipx
 #EPEL (http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm)
 repo --name=epel --baseurl=http://dl.fedoraproject.org/pub/epel/6/x86_64/
 
-#PUPPET (http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm)
-repo --name=puppet --baseurl=http://yum.puppetlabs.com/el/6/products/x86_64/
+# Installation logging level
+logging --level=info
 
 # Reboot after installation? (reboot / shutdwon)
 shutdown
@@ -83,6 +89,7 @@ shutdown
 %packages
 @ core
 @ development
+epel-release
 openssh-server
 openssh-clients
 wget
@@ -91,6 +98,7 @@ git
 man
 vim
 ntp
+
 %end
 
 ##############################################################################
@@ -112,7 +120,7 @@ ntpdate time.nist.gov
 service ntpd start
 
 #
-# SSHD
+# sshd
 #
 chkconfig sshd on
 chkconfig iptables off
@@ -145,6 +153,13 @@ BOOTPROTO=dhcp
 EOF1
 
 #
+# Install other Repos
+#
+
+# PUPPET
+rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
+
+#
 # Update the RPMs
 #
 yum update -y --skip-broken
@@ -156,7 +171,7 @@ service yum-autoupdate start
 #
 # Puppet install
 #
-yum install --enablerepo=puppet -y puppet facter
+yum install puppet facter -y
 
 #
 # Cleanup
