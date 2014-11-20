@@ -86,13 +86,12 @@ shutdown
 # packages part of the KickStart configuration file
 #
 ##############################################################################
-%packages
+%packages --ignoremissing
 @ core
 @ development
 epel-release
 openssh-server
 openssh-clients
-ntp
 %end
 
 ##############################################################################
@@ -101,25 +100,6 @@ ntp
 #
 ##############################################################################
 %post
-echo
-echo "################################"
-echo "# Running Post Configuration   #"
-echo "################################"
-#
-# NTP
-#
-chkconfig ntpd on
-service ntpd stop
-ntpdate time.nist.gov
-service ntpd start
-
-#
-# sshd
-#
-chkconfig sshd on
-chkconfig iptables off
-chkconfig ip6tables off
-
 #
 # Vagrant user
 #
@@ -166,12 +146,27 @@ service yum-autoupdate start
 #
 
 $ yum groupinstall -y "Development Tools"
-$ yum install -y wget man curl git vim bind-utils.x86_64
+$ yum install -y ntp wget man curl git vim bind-utils.x86_64
 
 #
 # Puppet install
 #
 yum install -y puppet facter
+
+#
+# NTP
+#
+chkconfig ntpd on
+service ntpd stop
+ntpdate time.nist.gov
+service ntpd start
+
+#
+# SSHD
+#
+chkconfig sshd on
+chkconfig iptables off
+chkconfig ip6tables off
 
 #
 # Cleanup
