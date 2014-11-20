@@ -92,13 +92,7 @@ shutdown
 epel-release
 openssh-server
 openssh-clients
-wget
-curl
-git
-man
-vim
 ntp
-
 %end
 
 ##############################################################################
@@ -155,7 +149,6 @@ EOF1
 #
 # Install other Repos
 #
-
 # PUPPET
 rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
 
@@ -169,9 +162,16 @@ chkconfig --add yum-autoupdate
 service yum-autoupdate start
 
 #
+# Install other Tools
+#
+
+$ yum groupinstall -y "Development Tools"
+$ yum install -y wget man curl git vim bind-utils.x86_64
+
+#
 # Puppet install
 #
-yum install puppet facter -y
+yum install -y puppet facter
 
 #
 # Cleanup
