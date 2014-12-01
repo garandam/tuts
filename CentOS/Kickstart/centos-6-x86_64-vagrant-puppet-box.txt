@@ -21,7 +21,8 @@ install
 cdrom
 
 # Language support
-lang de_CH.UTF-8
+# lang de_CH.UTF-8
+lang en_US.UTF-8
 
 # Keyboard (Swiss German)
 keyboard sg
@@ -145,7 +146,7 @@ service yum-autoupdate start
 # Install other Tools
 #
 yum groupinstall -y "Development Tools"
-yum install -y ntp wget man curl git vim bind-utils.x86_64
+yum install -y ntp wget man git vim bind-utils.x86_64
 
 # vim symbolic-Link erstellen
 mv /bin/vi /bin/vi.old
